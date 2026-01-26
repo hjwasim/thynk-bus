@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 @Service
 public class StationService {
 
-    private final StationRepository stationRepository;
-    private final ModelMapper modelMapper;
+    protected final StationRepository stationRepository;
+    protected final ModelMapper modelMapper;
 
     @Autowired
     public StationService(StationRepository stationRepository, ModelMapper modelMapper) {
