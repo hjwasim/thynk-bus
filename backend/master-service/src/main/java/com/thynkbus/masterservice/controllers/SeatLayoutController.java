@@ -23,7 +23,7 @@ public class SeatLayoutController {
 
     // TODO - Need to add logs
 
-    protected Logger logger = LoggerFactory.getLogger(SeatLayoutController.class.getName());
+    protected static final Logger logger = LoggerFactory.getLogger(SeatLayoutController.class.getName());
 
     protected final SeatLayoutService seatLayoutService;
 

@@ -1,11 +1,11 @@
 package com.thynkbus.masterservice.dtos.layout;
 
 import com.thynkbus.masterservice.entities.Seat;
-import lombok.Getter;
+import lombok.Data;
 
 import java.util.List;
 
-@Getter
+@Data
 abstract public class BaseSeatLayoutRequest {
     private boolean upper;
     private Integer rowMin;

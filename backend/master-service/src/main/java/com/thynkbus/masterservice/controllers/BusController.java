@@ -21,9 +21,8 @@ import java.util.Collection;
 public class BusController {
     
     // TODO - Need to add logs
-    
-    protected Logger logger = LoggerFactory.getLogger(BusController.class.getName());
 
+    protected static final Logger logger = LoggerFactory.getLogger(BusController.class.getName());
     protected final BusService busService;
 
     @Autowired

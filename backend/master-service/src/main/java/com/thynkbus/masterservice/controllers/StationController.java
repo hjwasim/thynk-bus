@@ -20,7 +20,7 @@ import java.util.Collection;
 public class StationController {
 
     // TODO - Need to add logs
-    protected Logger logger = LoggerFactory.getLogger(StationController.class.getName());
+    protected static final Logger logger = LoggerFactory.getLogger(StationController.class.getName());
 
     protected final StationService stationService;
 
