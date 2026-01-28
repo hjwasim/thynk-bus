@@ -7,19 +7,19 @@ type CardProps = {
 }
 
 const Card = ({ children, style }: CardProps) => {
-    return <View style={styles.card}>{children}</View>
+    return <View style={{...styles.card, ...style}}>{children}</View>
 }
 
 const styles = StyleSheet.create({
     card: {
         width: '100%',
         backgroundColor: '#fff',
-        borderRadius: 8,
+        borderRadius: 5,
         padding: 16,
         shadowColor: '#333',
         shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 4,
+        shadowRadius: 3,
+        elevation: 2,
     },
 })
 

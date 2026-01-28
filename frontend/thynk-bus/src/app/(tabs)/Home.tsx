@@ -1,8 +1,8 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import TripSearchForm from '@/src/components/core/TripSearchForm'
 import { LinearGradient } from 'expo-linear-gradient'
-import Card from '@/src/components/ui/Card'
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const Home = () => {
     return (
@@ -21,14 +21,14 @@ const Home = () => {
                     alignItems: 'center',
                 }}
             >
-                <View style={{ width: '80%' }}>
-                    <Text style={styles.welcomeText}>Lets Book your Bus Ticket!</Text>
+                <View style={{ width: '90%' }}>
+                    <Text style={styles.welcomeText}>
+                        Lets Book your Bus Ticket!
+                    </Text>
                     <Text style={styles.descriptionText}>
                         Save time and travel comfortably with ThynkBus
                     </Text>
-                    <Card>
-                        <Text>Hello</Text>
-                    </Card>
+                    <TripSearchForm />
                 </View>
             </View>
         </SafeAreaView>
