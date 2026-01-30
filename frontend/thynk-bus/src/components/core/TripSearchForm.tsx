@@ -68,7 +68,7 @@ const TripSearchForm = () => {
 
         router.push({
             pathname: '/BusResults',
-            params: { from, to, date: getFormattedDateForSearch(date) },
+            params: { from, to, date: getFormattedDateForSearch(date), fromName, toName },
         })
 
     }

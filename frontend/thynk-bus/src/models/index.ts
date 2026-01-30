@@ -60,3 +60,24 @@ export type TripSearchResponse = {
     status: string
     travelDate: string
 }
+
+export type TripStageSeat = {
+    sold: boolean
+    code: string
+    row: number
+    col: number
+    layer: number
+    aisle: boolean
+    window: boolean
+    price: number
+}
+
+export type TripStageLayoutResponse = {
+    id: string
+    upper: boolean
+    rowMin: number
+    rowMax: number
+    colMin: number
+    colMax: number
+    seats: TripStageSeat[]
+}

@@ -95,6 +95,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#fdf7ff',
         padding: 10,
         marginVertical: 5,
+        shadowColor: '#333',
+        shadowOpacity: 0.25,
+        shadowRadius: 3,
+        elevation: 2,
     },
     input: {
         padding: 10,

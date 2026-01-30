@@ -32,6 +32,7 @@ export default function RootLayout() {
             <QueryClientProvider client={queryClient}>
                 <StatusBar style="dark" />
                 <Stack>
+                  
                     <Stack.Screen
                         name="(tabs)"
                         options={{ headerShown: false }}
@@ -42,6 +43,10 @@ export default function RootLayout() {
                     />
                     <Stack.Screen
                         name="BusResults"
+                        options={{ headerShown: false }}
+                    />
+                      <Stack.Screen
+                        name="SeatLayout"
                         options={{ headerShown: false }}
                     />
                 </Stack>
