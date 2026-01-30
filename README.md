@@ -7,4 +7,7 @@ This project is a **bus ticket booking system** with **separate backend and fron
 
 Both applications are maintained in **separate directories** and communicate via REST APIs.
 
+http://url/to/img.png](https://i.postimg.cc/XJPRkNjs/screenshot.png
+
+
 - Developed by **Hjwasim**
