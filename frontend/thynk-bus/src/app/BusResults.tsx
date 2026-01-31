@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import Card from '../components/ui/Card'
+import useTripStore from '../stores/useTripStore'
 
 const formatDate = (date: Date): string => {
     return date.toLocaleTimeString('en-US', {
@@ -53,7 +54,10 @@ const BusResults = () => {
         queryFn: () => searchTrips(from, to, date),
     })
 
+    const { setTripStageId } = useTripStore()
+
     const handleClick = (tripStageId: string) => {
+        setTripStageId(tripStageId)
         router.push({
             pathname: '/SeatLayout',
             params: {

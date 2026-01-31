@@ -81,3 +81,23 @@ export type TripStageLayoutResponse = {
     colMax: number
     seats: TripStageSeat[]
 }
+
+export type BookingSeat = {
+    sold: boolean
+    code: string
+    row: number
+    col: number
+    layer: number
+    aisle: boolean
+    window: boolean
+    price: number
+    passengerName: string
+    passengerMob: string
+    gender: string
+    status: string
+}
+
+export type SeatBook = {
+    tripStageId: string
+    bookingSeats: BookingSeat[]
+}

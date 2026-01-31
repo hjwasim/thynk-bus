@@ -100,6 +100,16 @@ public class TripService {
         return modelMapper.map(saveStage, TripStageResponse.class);
     }
 
+    public void updateTripStageSeatLayout(String tripStageId, TripStageSeatLayout newSeatLayout) {
+        Optional<TripStage> optionalTripStage = tripStageRepository.findById(tripStageId);
+        if (optionalTripStage.isEmpty()) {
+            throw new RuntimeException("Trip Stage not found");
+        }
+        TripStage tripStage = optionalTripStage.get();
+        newSeatLayout.setId(tripStage.getSeatLayoutId());
+        tripStageSeatLayoutRepository.save(newSeatLayout);
+    }
+
     public TripStageLayoutResponse getTripStageSeatLayout(String stageId) {
         Optional<TripStage> optionalTripStage = tripStageRepository.findById(stageId);
 

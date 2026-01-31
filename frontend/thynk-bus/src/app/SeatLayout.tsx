@@ -9,6 +9,8 @@ import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { TripStageSeat } from '../models'
 import { VerticalSleeper } from '../components/core/VerticalSleeper'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
+import Card from '../components/ui/Card'
+import useSeatBookingStore from '../stores/useSeatBookingStore'
 
 export const buildVerticalGridByLayer = (
     data: TripStageSeat[]
@@ -55,6 +57,8 @@ const SeatLayout = () => {
     })
     const [selectedSeats, setSelectedSeats] = useState<TripStageSeat[]>([])
 
+    const { setSelectedSeatsStore } = useSeatBookingStore()
+
     const { seats, upper } = data
 
     const grids = buildVerticalGridByLayer(seats)
@@ -64,7 +68,7 @@ const SeatLayout = () => {
         upperDeck = grids[2]
     }
     const onSeatPress = (seat: TripStageSeat) => {
-        if(selectedSeats.length > 6) return
+        if (selectedSeats.length > 6) return
         if (seat.aisle || seat.code === '' || seat.sold) return
 
         setSelectedSeats((prev: TripStageSeat[]) => {
@@ -80,6 +84,11 @@ const SeatLayout = () => {
     }
     const isSelected = (seat: TripStageSeat) =>
         selectedSeats.some((s: TripStageSeat) => s.code === seat.code)
+
+    const bookSeats = () => {
+        setSelectedSeatsStore(selectedSeats)
+        router.push("/PassengerForm")
+    }
 
     return (
         <SafeAreaView edges={['top']} style={{ flex: 1 }}>
@@ -130,22 +139,20 @@ const SeatLayout = () => {
                                 color="#666"
                             />
                         </View>
-                        <ScrollView showsVerticalScrollIndicator={false}>
-                            <View style={styles.deck}>
-                                {lowerDeck.map((column, colIndex) => (
-                                    <View key={colIndex} style={styles.column}>
-                                        {column.map((seat, rowIndex) => (
-                                            <VerticalSleeper
-                                                key={`${seat.code}-${rowIndex}`}
-                                                seat={seat}
-                                                selected={isSelected(seat)}
-                                                onPress={onSeatPress}
-                                            />
-                                        ))}
-                                    </View>
-                                ))}
-                            </View>
-                        </ScrollView>
+                        <View style={styles.deck}>
+                            {lowerDeck.map((column, colIndex) => (
+                                <View key={colIndex} style={styles.column}>
+                                    {column.map((seat, rowIndex) => (
+                                        <VerticalSleeper
+                                            key={`${seat.code}-${rowIndex}`}
+                                            seat={seat}
+                                            selected={isSelected(seat)}
+                                            onPress={onSeatPress}
+                                        />
+                                    ))}
+                                </View>
+                            ))}
+                        </View>
                     </View>
 
                     <View style={{ width: 15 }}></View>
@@ -161,29 +168,60 @@ const SeatLayout = () => {
                             >
                                 <Text style={styles.deckTitle}>Upper deck</Text>
                             </View>
-                            <ScrollView showsVerticalScrollIndicator={false}>
-                                <View style={styles.deck}>
-                                    {grids[2].map((column, colIndex) => (
-                                        <View
-                                            key={colIndex}
-                                            style={styles.column}
-                                        >
-                                            {column.map((seat, rowIndex) => (
-                                                <VerticalSleeper
-                                                    key={`${seat.code}-${rowIndex}`}
-                                                    seat={seat}
-                                                    selected={isSelected(seat)}
-                                                    onPress={onSeatPress}
-                                                />
-                                            ))}
-                                        </View>
-                                    ))}
-                                </View>
-                            </ScrollView>
+                            <View style={styles.deck}>
+                                {grids[2].map((column, colIndex) => (
+                                    <View key={colIndex} style={styles.column}>
+                                        {column.map((seat, rowIndex) => (
+                                            <VerticalSleeper
+                                                key={`${seat.code}-${rowIndex}`}
+                                                seat={seat}
+                                                selected={isSelected(seat)}
+                                                onPress={onSeatPress}
+                                            />
+                                        ))}
+                                    </View>
+                                ))}
+                            </View>
                         </View>
                     )}
                 </ScrollView>
             </View>
+
+            {selectedSeats.length > 0 && (
+                <Card
+                    style={{
+                        backgroundColor: '#453cff',
+                        width: '95%',
+                        marginHorizontal: 'auto',
+                        marginTop: 15,
+                    }}
+                >
+                    <View
+                        style={{
+                            justifyContent: 'space-between',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: '#FAFAFA',
+                                fontFamily: 'Montserrat_500Medium',
+                            }}
+                        >
+                            Selected Seats:{' '}
+                            {selectedSeats.map((s) => s.code + ' ')}
+                        </Text>
+                        <Pressable onPress={bookSeats}>
+                            <Ionicons
+                                name="arrow-forward"
+                                size={30}
+                                color={'#FAFAFA'}
+                            />
+                        </Pressable>
+                    </View>
+                </Card>
+            )}
         </SafeAreaView>
     )
 }

@@ -36,7 +36,7 @@ maxDate.setDate(today.getDate() + 10)
 
 const TripSearchForm = () => {
     const [showDatePicker, setShowDatePicker] = useState<boolean>(false)
-    const [date, setDate] = useState<Date>(new Date())
+    const [date, setDate] = useState<Date>(new Date('2026-02-01'))
     const { from, fromName, to, toName } = useSearchStore()
 
     const handlePress = () => {

@@ -1,12 +1,10 @@
-package com.thynkbus.masterservice.dtos.tripstage;
+package com.thynkbus.masterservice.dtos.bookings;
 
 import com.thynkbus.masterservice.enums.SeatStatus;
 import lombok.Data;
 
-import java.math.BigDecimal;
-
 @Data
-public class TripStageSeat {
+public class BookingSeat {
 
     private String code;
     private Integer row;
@@ -15,6 +13,7 @@ public class TripStageSeat {
     private boolean aisle;
     private boolean window;
     private Double price;
-    private SeatStatus status;
-
+    private String passengerName;
+    private Long passengerMob;
+    private String gender;
 }
